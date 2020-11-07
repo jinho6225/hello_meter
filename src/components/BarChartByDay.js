@@ -11,18 +11,20 @@ function BarChartByDay({ data }) {
     const dimensions = useResizeObserver(wrapperRef)
     const history = useHistory();
 
+    const dayConvert = (num) => {
+        let arr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        return arr[num]
+    }
+
     function handleClick(d, index) {
-        history.push(`/bar-day-detail/${index}`);
+        let day = dayConvert(index)
+        history.push(`/bar-day-detail/${day}`);
     }   
 
     useEffect(() => {
         const svg = select(svgRef.current);
         if (!dimensions) return;
 
-        const dayConvert = (num) => {
-            let arr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-            return arr[num]
-        }
         //scale
         const xScale = scaleBand()
             .domain(data.map((value, index) => index))

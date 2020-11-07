@@ -1,4 +1,4 @@
-.bar-date-detail-container {
+.bar-date-detail-container, .bar-day-detail-container {
     min-width: 1200px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -30,9 +30,7 @@ height: 40vh;
 
 .field {
 display: inline-block;
-margin: 0 0.5em;
-}
-
-.field input {
-margin-right: 0.5em;
+margin: 0 0.3em 0 0;
+font-weight: 600;
+font-family: Arial, Helvetica, sans-serif;
 }

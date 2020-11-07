@@ -55,11 +55,18 @@ function BarDateDetail(props) {
             />
             <div className="fields">
                 {pieChartData.map(key => (
+                  <>
                     <div key={key.name} className="field">
-                      <label htmlFor={key.name} style={{ color: colors[key.name], fontWeight:700 }}>
+                      <label htmlFor={key.name} style={{ color: colors[key.name] }}>
                           {key.name}
                       </label>
                     </div>
+                    <div key={key.value} className="field">
+                      <label htmlFor={key.value} style={{ color: colors[key.name] }}>
+                          {key.value}
+                      </label>
+                    </div>
+                  </>                 
                 ))}
             </div>
           </div>

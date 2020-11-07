@@ -2,15 +2,18 @@ import React from 'react';
 import {HashRouter as Router, Route, Switch} from "react-router-dom";
 import Home from './routes/Home';
 import Profile from './routes/Profile';
+import Auth from './routes/Auth';
 import BarDateDetail from './routes/BarDateDetail';
 import BarDayDetail from './routes/BarDayDetail';
 import StackedDateDetail from './routes/StackedDateDetail';
 import StackedDayDetail from './routes/StackedDayDetail';
+import Navigation from './components/Navigation';
 
 
 const AppRouter = () => {
     return (
         <Router>
+            <Navigation />
             <Switch>
                     <>
                         <Route exact path='/'>
@@ -19,6 +22,9 @@ const AppRouter = () => {
                         <Route path='/profile'>
                             <Profile />
                         </Route>
+                        <Route path='/auth'>
+                            <Auth />
+                        </Route>                        
                         <Route path='/bar-date-detail/:id'>
                             <BarDateDetail />
                         </Route>

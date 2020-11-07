@@ -10,6 +10,7 @@ router.route('/api/stackedbarchartbydate').get(controllers.getDataForStackedBarC
 router.route('/api/barchartbyday').get(controllers.getDataForBarChartByDay)
 router.route('/api/stackedbarchartbyday').get(controllers.getDataForStackedBarChartByDay)
 router.route('/api/piechartbydate').get(controllers.getDataForPieChartByDate)
+router.route('/api/piechartbyday').get(controllers.getDataForPieChartByDay)
 
 // router.route('/api/stackedbarchartbyday').get(controllers.getDataForStackedBarChartByDay)
 // router.route('/sgt/name').get(controllers.getAllByName);
