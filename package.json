@@ -10,6 +10,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "csv-parser": "^2.3.3",
+    "d3": "^6.2.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.6",
     "pm2": "^4.4.0",
@@ -18,7 +19,12 @@
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
   },
+  "devDependencies": {
+    "cra-build-watch": "^3.4.0",
+    "resize-observer-polyfill": "^1.5.1"
+  },
   "scripts": {
+    "watch": "cra-build-watch",
     "start": "nodemon server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
