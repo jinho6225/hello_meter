@@ -12,7 +12,7 @@ function BarChartByDay({ data }) {
     const history = useHistory();
 
     function handleClick(d, index) {
-        history.push(`/detail/${index}`);
+        history.push(`/bar-day-detail/${index}`);
     }   
 
     useEffect(() => {
@@ -59,6 +59,16 @@ function BarChartByDay({ data }) {
             .data(data)
             .join("rect")
             .attr("class", "bar")
+            .on("mouseenter", function(e, d) {
+                select(this)
+                .attr("opacity", 0.3)
+                .transition()
+            })
+            .on("mouseleave", function(e, d) {
+                select(this)
+                .attr("opacity", 1)
+                .transition()
+            })
             .style("transform", 'scale(1, -1)')
             .attr('x', (value, index) => xScale(index))
             .attr('y', -dimensions.height)

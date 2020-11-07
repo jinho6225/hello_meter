@@ -12,7 +12,7 @@ function BarChartByDate({ data }) {
     const history = useHistory();
 
     function handleClick(d, index) {
-        history.push(`/detail/${index}`);
+        history.push(`/bar-date-detail/${index}`);
     }   
 
     useEffect(() => {        
@@ -56,9 +56,8 @@ function BarChartByDate({ data }) {
             .join("rect")
             .attr("class", "bar")
             .on("mouseenter", function(e, d) {
-                console.log(d)
                 select(this)
-                .attr("opacity", 0.4)
+                .attr("opacity", 0.3)
                 .transition()
             })
             .on("mouseleave", function(e, d) {

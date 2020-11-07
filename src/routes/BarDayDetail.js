@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams } from "react-router-dom";
 
-function Detail() {
+function BarDayDetail() {
   let { id } = useParams();
   console.log(id)
   return (
     <div>
-        Detail
+        BarDayDetail
     </div>
   );
 }
 
-export default Detail;
+export default BarDayDetail;

@@ -26,7 +26,7 @@ function StackedBarChartByDate({ data, keys, colors }) {
     console.log(d)
     console.log(d.data.date)
 
-    history.push(`/detail/${d.data.date}`);
+    history.push(`/stack-date-detail/${d.data.date}`);
   }  
   // will be called initially and on every data change
   useEffect(() => {
@@ -62,6 +62,16 @@ function StackedBarChartByDate({ data, keys, colors }) {
       .selectAll("rect")
       .data((layer) => layer)
       .join("rect")
+      .on("mouseenter", function(e, d) {
+        select(this)
+        .attr("opacity", 0.3)
+        .transition()
+      })
+      .on("mouseleave", function(e, d) {
+          select(this)
+          .attr("opacity", 1)
+          .transition()
+      })
       .attr('x', sequence => {
           return xScale(sequence.data.date)
       })
