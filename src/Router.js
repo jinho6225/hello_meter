@@ -1,8 +1,8 @@
 import React from 'react';
 import {HashRouter as Router, Route, Switch} from "react-router-dom";
 import Home from './routes/Home';
-import Profile from './routes/Profile';
-import Auth from './routes/Auth';
+import ContactUs from './routes/ContactUs';
+import Privacy from './routes/Privacy';
 import BarDateDetail from './routes/BarDateDetail';
 import BarDayDetail from './routes/BarDayDetail';
 import StackedDateDetail from './routes/StackedDateDetail';
@@ -19,11 +19,11 @@ const AppRouter = () => {
                         <Route exact path='/'>
                             <Home />
                         </Route>
-                        <Route path='/profile'>
-                            <Profile />
+                        <Route path='/contactus'>
+                            <ContactUs />
                         </Route>
-                        <Route path='/auth'>
-                            <Auth />
+                        <Route path='/privacy-policy'>
+                            <Privacy />
                         </Route>                        
                         <Route path='/bar-date-detail/:id'>
                             <BarDateDetail />

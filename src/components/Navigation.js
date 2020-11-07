@@ -9,16 +9,12 @@ function Navigation() {
             <div><Link to='/'><img src="./hellometor_small.png" alt="logo"/></Link></div>
             <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="mx-2"><Link to='/profile'>Profile</Link></li>
-                    <li className="mx-2"><Link to='/auth'>Auth</Link></li>
+                    <li className="mx-2"><Link to='/contactus'>ContactUs</Link></li>
+                    <li className="mx-2"><Link to='/privacy-policy'>Privacy Policy</Link></li>
                 </ul>
             </div>
         </nav>
     )
 }
-
-
-
-
 
 export default Navigation;
