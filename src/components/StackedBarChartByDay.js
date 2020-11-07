@@ -10,16 +10,24 @@ import {
   stackOrderAscending,
 } from "d3";
 import useResizeObserver from "./useResizeObserver";
+import { useHistory } from "react-router-dom";
 
 /**
  * Component that renders a StackedBarChart
  */
 
-function StackedBarChartByDate({ data, keys, colors }) {
+function StackedBarChartByDay({ data, keys, colors }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
+  const history = useHistory();
 
+  function handleClick(d) {
+    console.log(d)
+    console.log(d.data.convertedDay)
+
+    history.push(`/detail/${d.data.convertedDay}`);
+  }  
   // will be called initially and on every data change
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -36,7 +44,7 @@ function StackedBarChartByDate({ data, keys, colors }) {
 
     //scales
     const xScale = scaleBand()
-      .domain(data.map((d) => d.date))
+      .domain(data.map((d) => d.convertedDay))
       .range([0, width])
       .padding(0.3)
 
@@ -55,11 +63,14 @@ function StackedBarChartByDate({ data, keys, colors }) {
       .data((layer) => layer)
       .join("rect")
       .attr('x', sequence => {
-          return xScale(sequence.data.date)
+          return xScale(sequence.data.convertedDay)
       })
       .attr('width', xScale.bandwidth())
       .attr('y', sequence => yScale(sequence[1]))
       .attr('height', sequence => yScale(sequence[0]) - yScale(sequence[1]))
+      .on("click", function(e, d) {
+        handleClick(d);
+      })
 
     //axes
     const xAxis = axisBottom(xScale);
@@ -85,4 +96,4 @@ function StackedBarChartByDate({ data, keys, colors }) {
   );
 }
 
-export default StackedBarChartByDate;
+export default StackedBarChartByDay;

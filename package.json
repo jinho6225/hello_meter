@@ -13,18 +13,19 @@
     "d3": "^6.2.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.6",
+    "npm-watch": "^0.7.0",
     "pm2": "^4.4.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-    "cra-build-watch": "^3.4.0",
     "resize-observer-polyfill": "^1.5.1"
   },
   "scripts": {
-    "watch": "cra-build-watch",
+    "watch": "npm-watch",
     "start": "nodemon server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -35,6 +36,14 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "js,jsx,css"
+    }
   },
   "browserslist": {
     "production": [

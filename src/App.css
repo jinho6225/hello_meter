@@ -1,12 +1,13 @@
 .container {
+  max-width: 1600px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(650px, 1fr));
   column-gap: 2%;
-  row-gap: 20%;
+  /* row-gap: 2%; */
   grid-auto-rows: minmax(150px, auto);
-  margin: 3% auto;
-  height: 100vh;
-  padding: 0 50px 150px;
+  margin: 5% auto;
+  /* height: 100vh; */
+  padding: 10px 15px;
   text-align: center;
   box-sizing: border-box;
 }
