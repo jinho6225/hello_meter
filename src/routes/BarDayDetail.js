@@ -86,10 +86,10 @@ useEffect(() => {
     });
 }, []);
 
-  console.log(dataByDay, 'dataByDay')
-  console.log(dataForTTS, 'dataForTTS')
-  console.log(dataForFast, 'dataForFast')
-  console.log(dataForSlow, 'dataForSlow')
+  // console.log(dataByDay, 'dataByDay')
+  // console.log(dataForTTS, 'dataForTTS')
+  // console.log(dataForFast, 'dataForFast')
+  // console.log(dataForSlow, 'dataForSlow')
 
   return (
       <div className="bar-day-detail-container">
