@@ -91,7 +91,7 @@ function Home() {
                 <BarChartByDate data={barChartdataByDate} />
             </div>
             <div className="stacked-bar-chart-date child-container">
-                <h1>StackedBarChartByDate Aug / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
+                <h1>StackChartByDate Aug / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
                 <StackedBarChartByDate
                 data={stackedBarChartdataByDate}
                 keys={keys}
@@ -124,7 +124,7 @@ function Home() {
                 <BarChartByDay data={barChartdataByDay} />
             </div>
             <div className="stacked-bar-chart-day child-container">
-                <h1 style={{ color: "green" }}>StackedBarChartByDay / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
+                <h1 style={{ color: "green" }}>StackChartByDay / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
                 <StackedBarChartByDay
                 data={stackedBarChartdataByDay}
                 keys={stackedKeys}

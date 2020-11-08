@@ -2,7 +2,7 @@ import React from "react";
 
 function Privacy() {
   return (
-    <div>
+    <div className="container">
       <div className="content">
         <div
           className="sqs-layout sqs-grid-12 columns-12"

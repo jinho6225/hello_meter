@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import BarChart from "../components/BarChart";
 import PieChart from '../components/PieChart';
+import LineChart from '../components/LineChart';
 import "./BarDateDetail.css";
 
 const colors = {
@@ -16,6 +17,8 @@ const colors = {
 function BarDayDetail(props) {
   const [dataByDay, setDataByDay] = useState([]);
   const [dataForTTS, setDataForTTS] = useState([]);
+  const [dataForFast, setDataForFast] = useState([]);
+  const [dataForSlow, setDataForSlow] = useState([]);
 
   let { id } = useParams();
   console.log(props, 'props')
@@ -53,7 +56,30 @@ useEffect(() => {
           result.push(map)
           setDataForTTS(result)
         }
-      }      
+      }  
+      //for LineChart
+      for (const obj of data) {
+        if (obj.convertedDay == id) {
+          let result = [], result2 = []
+          let map = {}, map2 = {}
+          map['slow_breakfast'] = obj.slow_breakfast
+          map['slow_lunch'] = obj.slow_lunch
+          map['slow_afternoon'] = obj.slow_afternoon
+          map['slow_dinner'] = obj.slow_dinner
+          map['slow_evening'] = obj.slow_evening
+          map['slow_late_night'] = obj.slow_late_night
+          map2['fast_breakfast'] = obj.fast_breakfast
+          map2['fast_lunch'] = obj.fast_lunch
+          map2['fast_afternoon'] = obj.fast_afternoon
+          map2['fast_dinner'] = obj.fast_dinner
+          map2['fast_evening'] = obj.fast_evening
+          map2['fast_late_night'] = obj.fast_late_night
+          result.push(map)
+          result2.push(map2)
+          setDataForSlow(result)
+          setDataForFast(result2)
+        }
+      }     
     })
     .catch((error) => {
         console.error("Error:", error);
@@ -62,6 +88,8 @@ useEffect(() => {
 
   console.log(dataByDay, 'dataByDay')
   console.log(dataForTTS, 'dataForTTS')
+  console.log(dataForFast, 'dataForFast')
+  console.log(dataForSlow, 'dataForSlow')
 
   return (
       <div className="bar-day-detail-container">
@@ -92,6 +120,10 @@ useEffect(() => {
             <h1>BarChartForTTS / {id}</h1>
             {dataForTTS.length ? <BarChart data={dataForTTS} /> : null}
           </div>
+          <div className="line-chart-tts bar-day-detail-container-child-container">
+            <h1>LineChartFastAvgSlow / Day:{id}</h1>
+            {dataForFast.length ? <LineChart data={dataForFast} data2={dataForSlow} data3={dataForTTS} /> : null}
+          </div>          
       </div>
   );
 }
