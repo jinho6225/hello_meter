@@ -99,10 +99,10 @@ function BarChartByDay({ data }) {
             .attr('height', val => dimensions.height - yScale(val))
 
         svg
-            .selectAll(".tooltip")
+            .selectAll(".content")
             .data(data)
             .join(enter => enter.append('text').attr('y', d => yScale(d) - 4))
-            .attr('class', 'tooltip')
+            .attr('class', 'content')
             .text(d => d)
             .attr('x', (d, i) => xScale(i) + xScale.bandwidth() / 2)
             .attr('text-anchor', 'middle')
