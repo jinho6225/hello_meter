@@ -87,11 +87,11 @@ function Home() {
     return (
         <div className="container">
             <div className="bar-chart-date child-container">
-                <h1>BarChartByDate</h1>
+                <h1>BarChartByDate / Aug 3rd ~ {barChartdataByDate.length-1 + 3}th</h1>
                 <BarChartByDate data={barChartdataByDate} />
             </div>
             <div className="stacked-bar-chart-date child-container">
-                <h1>StackedBarChartByDate</h1>
+                <h1>StackedBarChartByDate Aug / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
                 <StackedBarChartByDate
                 data={stackedBarChartdataByDate}
                 keys={keys}
@@ -120,11 +120,11 @@ function Home() {
                 </div>
             </div>
             <div className="bar-chart-day child-container">
-                <h1 style={{ color: "green" }}>BarChartByDay</h1>
+                <h1 style={{ color: "green" }}>BarChartByDay / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
                 <BarChartByDay data={barChartdataByDay} />
             </div>
             <div className="stacked-bar-chart-day child-container">
-                <h1 style={{ color: "green" }}>StackedBarChartByDay</h1>
+                <h1 style={{ color: "green" }}>StackedBarChartByDay / {stackedBarChartdataByDate.length && stackedBarChartdataByDate[0].date}rd ~ {stackedBarChartdataByDate.length && stackedBarChartdataByDate[22].date}th</h1>
                 <StackedBarChartByDay
                 data={stackedBarChartdataByDay}
                 keys={stackedKeys}

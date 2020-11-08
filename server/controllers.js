@@ -84,14 +84,14 @@ const controllers = {
       res.status(400).error(e);
     }
   },
-  getDataForPieChartByDate: async (req, res) => {
+  getDataByDate: async (req, res) => {
     let results = [];
     try {
       let stream = await fs.createReadStream("data_aug27.csv");
       let data = await stream.pipe(csv());
       let arr = await data.on("data", (data) => results.push(data));
       await arr.on("end", () => {
-        console.log(results.length, "getDataForPieChartByDate");
+        console.log(results.length, "getDataByDate");
         let arr = filterDataForStackedBarChartByDate(results);
         res.status(200).send(arr);
       });
