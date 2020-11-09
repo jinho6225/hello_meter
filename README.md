@@ -24,8 +24,7 @@ Try the application live at [https://hellometer.jinho6225.com](https://hellomete
 
 # Preview
 
-![demo1](public/hellometer1.gif)
-![demo2](public/hellometer2.gif)
+![demo1](public/hellometer2.gif)
 
 
 ## Development
