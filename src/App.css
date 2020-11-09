@@ -35,4 +35,6 @@ svg {
 
 .field input {
   margin-right: 0.5em;
+  cursor: pointer;
 }
+
