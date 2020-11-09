@@ -52,15 +52,15 @@ function BarChart({ data, data2, data3 }) {
     const myLine = line()
         .x((val, i) => xScale(i))
         .y((val) => yScale(val))
-        // .curve(curveCardinal)
+        .curve(curveCardinal)
     const myLine2 = line()
         .x((val, i) => xScale2(i))
         .y((val) => yScale2(val))
-        // .curve(curveCardinal)
+        .curve(curveCardinal)
     const myLine3 = line()
         .x((val, i) => xScale3(i))
         .y((val) => yScale3(val))
-        // .curve(curveCardinal)
+        .curve(curveCardinal)
     //path
     svg
         .selectAll(".line")
