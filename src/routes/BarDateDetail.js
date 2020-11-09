@@ -6,11 +6,11 @@ import LineChart from '../components/LineChart';
 import "./BarDateDetail.css";
 
 const colors = {
-  "breakfast": 'navy',
-  "lunch": 'green',
-  "afternoon": 'blue',
-  "dinner": 'orange',
-  "evening": 'black',
+  "breakfast": 'pink',
+  "lunch": 'orange',
+  "afternoon": 'green',
+  "dinner": 'blue',
+  "evening": 'purple',
   "late_night": 'red',
 };
 
@@ -21,7 +21,6 @@ function BarDateDetail(props) {
     const [dataForSlow, setDataForSlow] = useState([]);
 
     const { id } = useParams();
-    console.log(props, 'props')
 
     useEffect(() => {
       fetch(`/api/databydate`)
@@ -94,12 +93,12 @@ function BarDateDetail(props) {
     return (
       <div className="bar-date-detail-container">
           <div className="pie-chart bar-date-detail-container-child-container">
-            <h1>Data by day part <span className="head-date">(8/{id}) per date</span></h1>
+            <h1>Customer Visit on 8/{id}<span className="head-date">(per date)</span></h1>
             <PieChart 
             data={dataByDate.filter(data => Object.keys(colors).includes(data.name))}
             colors={colors}
             />
-            <div className="fields" style={{ marginBottom: "1rem" }}>
+            <div className="fields" >
                 {dataByDate.filter(data => Object.keys(colors).includes(data.name)).map(key => (
                   <>
                     <div key={key.name} className="field">
@@ -115,17 +114,34 @@ function BarDateDetail(props) {
                   </>                 
                 ))}
             </div>
-            <div className="desc">it shows how many customer visit per day_part for each date</div>
+            <div className="desc">The chart above shows how many customers visit per Day Part for each date.</div>
           </div>
-          <div className="bar-chart-tts bar-date-detail-container-child-container">
-            <h1>Average TTS by day part <span className="head-date">(8/{id}) per date</span></h1>
+          <div className="bar-chart-tts bar-date-detail-container-child-container" >
+            <h1>Average TTS on 8/{id}<span className="head-date">(per date)</span></h1>
             {dataForTTS.length ? <BarChart data={dataForTTS} /> : null}
-            <div className="desc">it shows average TTS(total time to service) per day_part for each date</div>
+            <div className="desc"> The chart above shows average TTS(total time to service) per Day Part for each date</div>
           </div>
           <div className="line-chart-tts bar-date-detail-container-child-container">
-            <h1>Fastest & Avg & Slowest TTS by day part <span className="head-date">(8/{id}) per date</span></h1>
+            <h1>Fastest & Avg & Slowest TTS on 8/{id}<span className="head-date">(per date)</span></h1>
             {dataForFast.length ? <LineChart data={dataForFast} data2={dataForSlow} data3={dataForTTS} /> : null}
-            <div className="desc">it shows fastest one, average one, slowest one per day part for each date</div>
+            <div className="fields" style={{ padding: '1% 0 0 6%' }}>
+                    <div className="field">
+                      <label style={{ color: "orange" }}>
+                          Fastest TTS
+                      </label>
+                    </div>
+                    <div className="field">
+                      <label style={{ color: "red" }}>
+                          Average TTS
+                      </label>
+                    </div>
+                    <div className="field">
+                      <label style={{ color: "blue" }}>
+                          Slowest TTS
+                      </label>
+                    </div>
+            </div>
+            <div className="desc">The chart above shows fastest, average, slowest TTS per Day Part each date</div>
           </div>
       </div>
     );

@@ -94,7 +94,7 @@ function Home() {
             style={{ display: toggle ? "none" : "block" }}
         >
             <h1>
-            Overview by Date <span className="head-date">(8/3 ~ 8/{barChartdataByDate.length - 1 + 3})</span>
+            Customer Data Overview<span className="head-date"> (8/3 ~ 8/{barChartdataByDate.length - 1 + 3})</span>
             </h1>
             <BarChartByDate data={barChartdataByDate} />
             <div className="fields d-flex justify-content-between px-2">
@@ -103,21 +103,17 @@ function Home() {
             </button>
             <label>Click bar to view additional details</label>
             </div>
-            <div className="desc">It shows how many customer visit per date</div>
+            <div className="desc">Each bar shows how many customer visit per date<br/>
+            It's seperated by 75(red), 100(orange), max(green)</div>
         </div>
         <div
             className="stacked-bar-chart-date child-container"
             style={{ display: toggle ? "block" : "none" }}
         >
             <h1>
-            Daily Overview Detail / Aug{" "}
-            {stackedBarChartdataByDate.length &&
-                stackedBarChartdataByDate[0].date}
-            rd ~{" "}
-            {stackedBarChartdataByDate.length &&
-                stackedBarChartdataByDate[22].date}
-            th
-            </h1>
+            Daily Overview Detail<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
+                stackedBarChartdataByDate[0].date} ~ 8/{stackedBarChartdataByDate.length &&
+                stackedBarChartdataByDate[stackedBarChartdataByDate.length-1].date})</span></h1>
             <StackedBarChartByDate
             data={stackedBarChartdataByDate}
             keys={keys}
@@ -145,8 +141,8 @@ function Home() {
                 </div>
             ))}
             </div>
-            <div className="desc">it shows how many customer visit per day_part for each date<br />
-            you could check how much important this portion of each day_part for  using checkbox
+            <div className="desc">Each bar shows how many customer visit per Day Part for each date.<br />
+            You could check how much portion of this Day Part per date using the checkboxes above
             </div>
         </div>
         <div
@@ -154,9 +150,9 @@ function Home() {
             style={{ display: toggle2 ? "none" : "block" }}
         >
             <h1 style={{ color: "green" }}>
-            Overview by Day of Week<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
+            Customer Data Overview<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[0].date} ~ 8/{stackedBarChartdataByDate.length &&
-                stackedBarChartdataByDate[22].date})</span></h1>
+                stackedBarChartdataByDate[stackedBarChartdataByDate.length-1].date})</span></h1>
             <BarChartByDay data={barChartdataByDay} />
             <div className="fields d-flex justify-content-between px-2">
             <button className="btn btn-info" onClick={() => setToggle2(!toggle2)}>
@@ -164,21 +160,17 @@ function Home() {
             </button>
             <label>Click bar to view additional details</label>
             </div>
-            <div className="desc">it shows how many customer visit per day of week</div>
+            <div className="desc">Each bar shows how many customer visit per day of week<br />
+            It's seperated by 300(red), 400(orange), max(green)</div>
         </div>
         <div
             className="stacked-bar-chart-day child-container"
             style={{ display: toggle2 ? "block" : "none" }}
         >
             <h1 style={{ color: "green" }}>
-            Monthly Overview Detail /{" "}
-            {stackedBarChartdataByDate.length &&
-                stackedBarChartdataByDate[0].date}
-            rd ~{" "}
-            {stackedBarChartdataByDate.length &&
-                stackedBarChartdataByDate[22].date}
-            th
-            </h1>
+            Monthly Overview Detail<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
+                stackedBarChartdataByDate[0].date} ~ 8/{stackedBarChartdataByDate.length &&
+                stackedBarChartdataByDate[stackedBarChartdataByDate.length-1].date})</span></h1>
             <StackedBarChartByDay
             data={stackedBarChartdataByDay}
             keys={stackedKeys}
@@ -206,8 +198,8 @@ function Home() {
                 </div>
             ))}
             </div>
-            <div className="desc">it shows how many customer visit per day_part for each day of week<br />
-            you could check how important portion of this day_part per day of week using checkbox
+            <div className="desc">Each bar shows how many customer visit per Day Part for each day of week.<br />
+            You could check how much portion of this Day Part per day of week using the checkboxes above
             </div>
             </div>
         </div>

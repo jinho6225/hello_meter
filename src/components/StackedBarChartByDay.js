@@ -72,6 +72,20 @@ function StackedBarChartByDay({ data, keys, colors }) {
     const yAxis = axisLeft(yScale);
     svg.selectAll(".y-axis").call(yAxis);
 
+    svg
+      .selectAll('.y-axis-label')
+      .data(['Number of Customer'])
+      .join(
+          enter => enter.append("text")
+          .attr('class', 'y-axis-label')
+      )
+      .attr("fill", "Navy")//set the fill here
+      .attr("transform", "rotate(-90)")
+      .attr("y", -35)
+      .attr("x", 0 - (dimensions && dimensions.height / 2) - 75)
+      .text(d => d)
+
+    
   }, [colors, data, dimensions, keys]);
 
   return (

@@ -1,13 +1,13 @@
 const timeStampToDate = (ts) => {
     let date = new Date(ts)
     return {
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        date: date.getDate(),
-        day: date.getDay(),
-        hr: date.getHours(),
-        min: date.getMinutes(),
-        sec: date.getSeconds()
+        year: date.getUTCFullYear(),
+        month: date.getUTCMonth(),
+        date: date.getUTCDate(),
+        day: date.getUTCDay(),
+        hr: date.getUTCHours(),
+        min: date.getUTCMinutes(),
+        sec: date.getUTCSeconds()
     }
 }
 const dayConvert = (num) => {

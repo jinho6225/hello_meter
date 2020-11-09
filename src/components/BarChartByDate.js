@@ -10,6 +10,7 @@ function BarChartByDate({ data }) {
     const wrapperRef = useRef();
     const dimensions = useResizeObserver(wrapperRef)
     const history = useHistory();
+    const padding = 35
 
     function handleClick(d, index) {
         history.push(`/bar-date-detail/${index}`);
@@ -27,7 +28,7 @@ function BarChartByDate({ data }) {
         .padding(0.3);
 
         const yScale = scaleLinear()
-            .domain([0, max(data)+30]) //todo
+            .domain([0, max(data)+padding]) //todo
             .range([dimensions.height, 0]); // change
 
         const colorScale = scaleLinear()
@@ -41,14 +42,38 @@ function BarChartByDate({ data }) {
 
         svg
             .select(".x-axis")
-            .style("transform", `translateY(${dimensions.height}px)`)
-            .call(xAxis);
+            .style("transform", `translate(0, ${dimensions.height}px)`)
+            .call(xAxis)
+            
+        svg
+            .selectAll('.x-axis-label')
+            .data(['Date'])
+            .join(
+                enter => enter.append("text").attr('class', 'x-axis-label')
+            )
+            .attr("fill", "Navy")//set the fill here
+            .attr("transform",
+            "translate(" + (dimensions.width/2-17) + " ," + 
+            (dimensions.height + padding) + ")")
+            .text(d => d)
 
         //create y-axis
         const yAxis = axisLeft(yScale);
         svg
             .selectAll(".y-axis")
             .call(yAxis);
+
+        svg
+            .selectAll('.y-axis-label')
+            .data(['Number of Customer'])
+            .join(
+                enter => enter.append("text").attr('class', 'y-axis-label')
+            )
+            .attr("fill", "Navy")//set the fill here
+            .attr("transform", "rotate(-90)")
+            .attr("y", -padding)
+            .attr("x", 0 - (dimensions.height / 2) - 75)
+            .text(d => d)
 
         svg
             .selectAll(".bar")

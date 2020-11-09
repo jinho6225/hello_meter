@@ -32,17 +32,40 @@ function BarChart({ data }) {
             .ticks(Object.keys(data[0]).length)
             .tickFormat((d, i) => ['breakfast', 'lunch', 'afternoon', 'dinner', 'evening', 'late_night'][i]);  
 
-
         svg
             .select(".x-axis")
             .style("transform", `translateY(${dimensions.height}px)`)
             .call(xAxis);
+
+        svg
+            .selectAll('.x-axis-label')
+            .data(['Day of Week'])
+            .join(
+                enter => enter.append("text").attr('class', 'x-axis-label')
+            )
+            .attr("fill", "Navy")//set the fill here
+            .attr("transform",
+            "translate(" + (dimensions.width/2-45) + " ," + 
+            (dimensions.height + 35) + ")")
+            .text(d => d)            
 
         //create y-axis
         const yAxis = axisLeft(yScale);
         svg
             .selectAll(".y-axis")
             .call(yAxis);
+
+        svg
+            .selectAll('.y-axis-label')
+            .data(['Second(TTS)'])
+            .join(
+                enter => enter.append("text").attr('class', 'y-axis-label')
+            )
+            .attr("fill", "Navy")//set the fill here
+            .attr("transform", "rotate(-90)")
+            .attr("y", -35)
+            .attr("x", 0 - (dimensions.height / 2) - 48)
+            .text(d => d)
 
         svg
             .selectAll(".bar")

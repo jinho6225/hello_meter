@@ -9,6 +9,7 @@ import Navigation from './components/Navigation';
 
 
 const AppRouter = () => {
+    
     return (
         <Router>
             <Navigation />

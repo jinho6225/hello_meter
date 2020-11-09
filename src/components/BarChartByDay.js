@@ -10,6 +10,7 @@ function BarChartByDay({ data }) {
     const wrapperRef = useRef();
     const dimensions = useResizeObserver(wrapperRef)
     const history = useHistory();
+    const padding = 35
 
     const dayConvert = (num) => {
         let arr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -50,11 +51,35 @@ function BarChartByDay({ data }) {
             .style("transform", `translateY(${dimensions.height}px)`)
             .call(xAxis);
 
+        svg
+            .selectAll('.x-axis-label')
+            .data(['Day of Week'])
+            .join(
+                enter => enter.append("text").attr('class', 'x-axis-label')
+            )
+            .attr("fill", "Navy")//set the fill here
+            .attr("transform",
+            "translate(" + (dimensions.width/2-45) + " ," + 
+            (dimensions.height + padding) + ")")
+            .text(d => d)
+
         //create y-axis
         const yAxis = axisLeft(yScale);
         svg
             .selectAll(".y-axis")
             .call(yAxis);
+
+        svg
+            .selectAll('.y-axis-label')
+            .data(['Number of Customer'])
+            .join(
+                enter => enter.append("text").attr('class', 'y-axis-label')
+            )
+            .attr("fill", "Navy")//set the fill here
+            .attr("transform", "rotate(-90)")
+            .attr("y", -padding)
+            .attr("x", 0 - (dimensions.height / 2) - 75)
+            .text(d => d)
 
         svg
             .selectAll(".bar")

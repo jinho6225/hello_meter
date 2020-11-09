@@ -1,5 +1,5 @@
 .bar-date-detail-container, .bar-day-detail-container {
-    min-width: 1150px;
+    min-width: 1200px;
     display: grid;
     grid-template-areas:"part1 part2"
                         "part3 part3";
@@ -16,17 +16,17 @@
 
 .pie-chart {
     grid-area: part1;
-    background-color: #d8deff;
+    padding: 0 3%;
     margin: 0 1%;
 }
 .bar-chart-tts {
     grid-area: part2;
-    background-color: #ffe4de;
+    padding: 0 3%;
     margin: 0 1%;
 }
 .line-chart-tts {
     grid-area: part3;
-    background-color: #ffffc7;
+    padding: 0 3%;
 }
 
 .svgContainer {
@@ -34,7 +34,7 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding: 0 3%;
+    padding: 0 0 0 6%;
 }
 
 svg {
