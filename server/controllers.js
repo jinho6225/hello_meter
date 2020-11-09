@@ -32,6 +32,7 @@ const controllers = {
         console.log(results.length, "getDataForBarChartByDate");
         let obj = filterDataForBarChartByDate(results);
         let data = Object.values(obj).map((data) => data.length);
+	console.log(data, 'data1')
         res.status(200).send(data);
       });
     } catch (error) {
@@ -63,6 +64,7 @@ const controllers = {
         console.log(results.length, "getDataForBarChartByDay");
         let obj = filterDataForBarChartByDay(results);
         let data = Object.values(obj).map((data) => data.length);
+	console.log(data, 'data2')
         res.status(200).send(data);
       });
     } catch (error) {
