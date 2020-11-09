@@ -38,3 +38,14 @@ svg {
   cursor: pointer;
 }
 
+.head-date {
+  font-size: 1.3rem;
+}
+
+.child-container button {
+  line-height: 0.5;
+}
+
+.desc {
+  margin-bottom: 2%;
+}

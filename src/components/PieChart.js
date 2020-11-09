@@ -41,7 +41,7 @@ function PieChart({ data, colors }) {
   }, [data, dimensions]);
 
   return (
-    <div className="svgContainer" ref={wrapperRef} style={{ marginBottom: "2rem" }}>
+    <div className="svgContainer" ref={wrapperRef} >
       <svg ref={svgRef}></svg>
     </div>
   );

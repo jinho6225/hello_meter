@@ -94,12 +94,12 @@ useEffect(() => {
   return (
       <div className="bar-day-detail-container">
           <div className="pie-chart bar-day-detail-container-child-container">
-            <h1>PieChartByDay / {id}</h1>
+          <h1>Data by day part <span className="head-date">({id}) per day of week</span></h1>
             <PieChart 
             data={dataByDay.filter(data => Object.keys(colors).includes(data.name))}
             colors={colors}
             />
-            <div className="fields">
+            <div className="fields" style={{ marginBottom: "1rem" }}>
                 {dataByDay.filter(data => Object.keys(colors).includes(data.name)).map(key => (
                   <>
                     <div key={key.name} className="field">
@@ -115,14 +115,18 @@ useEffect(() => {
                   </>                 
                 ))}
             </div>
+            <div className="desc">it shows how many customer visit per day_part for each day of week</div>
           </div>
           <div className="bar-chart-tts bar-day-detail-container-child-container">
-            <h1>BarChartForTTS / {id}</h1>
+          <h1>Average TTS by day part <span className="head-date">({id}) per day of week</span></h1>
             {dataForTTS.length ? <BarChart data={dataForTTS} /> : null}
+            <div className="desc">it shows average TTS(total time to service) per day_part for day of week</div>
+
           </div>
           <div className="line-chart-tts bar-day-detail-container-child-container">
-            <h1>LineChartFastAvgSlow / Day:{id}</h1>
+            <h1>Fastest & Avg & Slowest TTS by day part <span className="head-date">({id}) per day of week</span></h1>
             {dataForFast.length ? <LineChart data={dataForFast} data2={dataForSlow} data3={dataForTTS} /> : null}
+            <div className="desc">it shows fastest one, average one, slowest one per day part for day of week</div>
           </div>          
       </div>
   );
