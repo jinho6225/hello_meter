@@ -5,9 +5,11 @@ const controllers = require('./controllers')
 
 
 router.route('/api').get(controllers.getAll)
-router.route('/api/barchartbydate').get(controllers.getDataForBarChartByDate)
+router.route('/api/barchart/:id').get(controllers.getDataForBarChart)
+
+// router.route('/api/barchartbydate').get(controllers.getDataForBarChartByDate)
 router.route('/api/stackedbarchartbydate').get(controllers.getDataForStackedBarChartByDate)
-router.route('/api/barchartbyday').get(controllers.getDataForBarChartByDay)
+// router.route('/api/barchartbyday').get(controllers.getDataForBarChartByDay)
 router.route('/api/stackedbarchartbyday').get(controllers.getDataForStackedBarChartByDay)
 router.route('/api/databydate').get(controllers.getDataByDate)
 router.route('/api/databyday').get(controllers.getDataByDay)

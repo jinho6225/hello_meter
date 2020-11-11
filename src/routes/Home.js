@@ -44,9 +44,10 @@ function Home() {
     const [toggle2, setToggle2] = useState(false);
 
     useEffect(() => {
-        fetch(`/api/barchartbydate`)
+        fetch(`/api/barchart/date`)
         .then((res) => res.json())
         .then((data) => {
+            console.log(data, 'date')
             setBarChartdataByDate(data);
         })
         .catch((error) => {
@@ -66,9 +67,10 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        fetch(`/api/barchartbyday`)
+        fetch(`/api/barchart/day`)
         .then((res) => res.json())
         .then((data) => {
+            console.log(data, 'day')
             setBarChartdataByDay(data);
         })
         .catch((error) => {
