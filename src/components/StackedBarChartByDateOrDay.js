@@ -15,7 +15,7 @@ import useResizeObserver from "./useResizeObserver";
  * Component that renders a StackedBarChart
  */
 
-function StackedBarChartByDay({ data, keys, colors }) {
+function StackedBarChartByDateOrDay({ data, keys, colors, opt=false  }) {
   const svgRef = useRef();
   const wrapperRef = useRef();
   const dimensions = useResizeObserver(wrapperRef);
@@ -35,8 +35,14 @@ function StackedBarChartByDay({ data, keys, colors }) {
     ];
 
     //scales
-    const xScale = scaleBand()
+    const xScale = opt ?
+      scaleBand()
       .domain(data.map((d) => d.convertedDay))
+      .range([0, width])
+      .padding(0.3)
+      :
+      scaleBand()
+      .domain(data.map((d) => d.date))
       .range([0, width])
       .padding(0.3)
 
@@ -55,7 +61,8 @@ function StackedBarChartByDay({ data, keys, colors }) {
       .data((layer) => layer)
       .join("rect")
       .attr('x', sequence => {
-          return xScale(sequence.data.convertedDay)
+        let result = opt ? sequence.data.convertedDay : sequence.data.date        
+        return xScale(result)
       })
       .attr('width', xScale.bandwidth())
       .attr('y', sequence => yScale(sequence[1]))
@@ -100,4 +107,4 @@ function StackedBarChartByDay({ data, keys, colors }) {
   );
 }
 
-export default StackedBarChartByDay;
+export default StackedBarChartByDateOrDay;

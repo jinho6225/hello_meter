@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BarChartByDateOrDay from "../components/BarChartByDateOrDay";
-// import BarChartByDay from "../components/BarChartByDay";
-import StackedBarChartByDate from "../components/StackedBarChartByDate";
-import StackedBarChartByDay from "../components/StackedBarChartByDay";
+import StackedBarChartByDateOrDay from "../components/StackedBarChartByDateOrDay";
+
 
 const allKeys = [
   "breakfast",
@@ -47,7 +46,6 @@ function Home() {
         fetch(`/api/barchart/date`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data, 'date')
             setBarChartdataByDate(data);
         })
         .catch((error) => {
@@ -56,7 +54,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        fetch(`/api/stackedbarchartbydate`)
+        fetch(`/api/stackedbarchart/date`)
         .then((res) => res.json())
         .then((data) => {
             setStackedBarChartdataByDate(data);
@@ -70,7 +68,6 @@ function Home() {
         fetch(`/api/barchart/day`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data, 'day')
             setBarChartdataByDay(data);
         })
         .catch((error) => {
@@ -79,7 +76,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        fetch(`/api/stackedbarchartbyday`)
+        fetch(`/api/stackedbarchart/day`)
         .then((res) => res.json())
         .then((data) => {
             setStackedBarChartdataByDay(data);
@@ -116,7 +113,7 @@ function Home() {
             Daily Overview Detail<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[0].date} ~ 8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[stackedBarChartdataByDate.length-1].date})</span></h1>
-            <StackedBarChartByDate
+            <StackedBarChartByDateOrDay
             data={stackedBarChartdataByDate}
             keys={keys}
             colors={colors}
@@ -173,10 +170,11 @@ function Home() {
             Monthly Overview Detail<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[0].date} ~ 8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[stackedBarChartdataByDate.length-1].date})</span></h1>
-            <StackedBarChartByDay
+            <StackedBarChartByDateOrDay
             data={stackedBarChartdataByDay}
             keys={stackedKeys}
             colors={colors}
+            opt={true}
             />
             <div className="fields d-flex justify-content-between">
             <button className="btn btn-info" onClick={() => setToggle2(!toggle2)}>
