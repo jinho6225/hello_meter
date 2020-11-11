@@ -4,7 +4,7 @@ import useResizeObserver from "./useResizeObserver";
 import { useHistory } from "react-router-dom";
 
 
-function BarChartByDate({ data }) {
+function BarChartByDate({ data, opt=false }) {
     
     const svgRef = useRef();
     const wrapperRef = useRef();

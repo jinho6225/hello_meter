@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import BarChartByDate from "../components/BarChartByDate";
-import BarChartByDay from "../components/BarChartByDay";
+import BarChartByDateOrDay from "../components/BarChartByDateOrDay";
+// import BarChartByDay from "../components/BarChartByDay";
 import StackedBarChartByDate from "../components/StackedBarChartByDate";
 import StackedBarChartByDay from "../components/StackedBarChartByDay";
 
@@ -98,7 +98,7 @@ function Home() {
             <h1>
             Customer Data Overview<span className="head-date"> (8/3 ~ 8/{barChartdataByDate.length - 1 + 3})</span>
             </h1>
-            <BarChartByDate data={barChartdataByDate} />
+            <BarChartByDateOrDay data={barChartdataByDate} />
             <div className="fields d-flex justify-content-between px-2">
             <button className="btn btn-info" onClick={() => setToggle(!toggle)}>
                 Show Data By Day Part
@@ -155,7 +155,7 @@ function Home() {
             Customer Data Overview<span className="head-date"> (8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[0].date} ~ 8/{stackedBarChartdataByDate.length &&
                 stackedBarChartdataByDate[stackedBarChartdataByDate.length-1].date})</span></h1>
-            <BarChartByDay data={barChartdataByDay} />
+            <BarChartByDateOrDay data={barChartdataByDay} opt={true} />
             <div className="fields d-flex justify-content-between px-2">
             <button className="btn btn-info" onClick={() => setToggle2(!toggle2)}>
                 Show Data By Day Part

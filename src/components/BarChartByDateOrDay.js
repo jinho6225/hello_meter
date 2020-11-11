@@ -4,7 +4,7 @@ import useResizeObserver from "./useResizeObserver";
 import { useHistory } from "react-router-dom";
 
 
-function BarChartByDay({ data }) {
+function BarChartByDateOrDay({ data, opt=false }) {
 
     const svgRef = useRef();
     const wrapperRef = useRef();
@@ -18,8 +18,10 @@ function BarChartByDay({ data }) {
     }
 
     function handleClick(d, index) {
-        let day = dayConvert(index)
-        history.push(`/bar-day-detail/${day}`);
+        if (opt) {
+            let day = dayConvert(index)
+            history.push(`/bar-day-detail/${day}`);
+        }
     }   
 
     useEffect(() => {
@@ -37,29 +39,46 @@ function BarChartByDay({ data }) {
             .domain([0, max(data)+50]) //todo
             .range([dimensions.height, 0]); // change
 
-        const colorScale = scaleLinear()
-            .domain([300, 400, max(data)])
+        let colorTheme = opt ? [300, 400, max(data)] : [75, 100, max(data)]
+        const colorScale = 
+            opt ? 
+            scaleLinear()
+            .domain(colorTheme)
+            .range(["red", "orange", "green"])
+            .clamp(true)
+            :
+            scaleLinear()
+            .domain(colorTheme)
             .range(["red", "orange", "green"])
             .clamp(true);
 
         //create x-axis
-        const xAxis = axisBottom(xScale)
-            .ticks(data.length).tickFormat((d, i) => dayConvert(i));
+        const xAxis = 
+            opt ?
+            axisBottom(xScale)
+            .ticks(data.length).tickFormat((d, i) => dayConvert(i))
+            :
+            axisBottom(xScale)
+            .ticks(data.length).tickFormat((d, i) => i+3)
+
 
         svg
             .select(".x-axis")
             .style("transform", `translateY(${dimensions.height}px)`)
             .call(xAxis);
 
+        let xAxisLabel = opt ? 'Day of Week' : 'Date'
+        let xPosition = opt ? dimensions.width/2-45 : dimensions.width/2-17
+
         svg
             .selectAll('.x-axis-label')
-            .data(['Day of Week'])
+            .data([xAxisLabel])
             .join(
                 enter => enter.append("text").attr('class', 'x-axis-label')
             )
             .attr("fill", "Navy")//set the fill here
             .attr("transform",
-            "translate(" + (dimensions.width/2-45) + " ," + 
+            "translate(" + (xPosition) + " ," + 
             (dimensions.height + padding) + ")")
             .text(d => d)
 
@@ -104,21 +123,6 @@ function BarChartByDay({ data }) {
                 const index = svg.selectAll(".bar").nodes().indexOf(this);
                 handleClick(d, index);
             })            
-            // .on("mouseenter", function (event, val) {
-            //     const index = svg.selectAll(".bar").nodes().indexOf(this);
-            //     svg
-            //         .selectAll(".tooltip")
-            //         .data([val])
-            //         .join(enter => enter.append('text').attr('y', yScale(val) - 4))
-            //         .attr('class', 'tooltip')
-            //         .text(val)
-            //         .attr('x', xScale(index) + xScale.bandwidth() / 2)
-            //         .attr('text-anchor', 'middle')
-            //         .transition()
-            //         .attr('y', yScale(val) - 8)
-            //         .attr("opacity", 1);
-            // })
-            // .on("mouseleave", () => svg.select(".tooltip").remove())
             .transition()
             .attr('fill', colorScale)
             .attr('height', val => dimensions.height - yScale(val))
@@ -148,4 +152,4 @@ function BarChartByDay({ data }) {
     );
 }
 
-export default BarChartByDay
+export default BarChartByDateOrDay
