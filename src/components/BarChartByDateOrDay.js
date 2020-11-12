@@ -21,6 +21,8 @@ function BarChartByDateOrDay({ data, opt=false }) {
         if (opt) {
             let day = dayConvert(index)
             history.push(`/bar-day-detail/${day}`);
+        } else {
+            history.push(`/bar-day-detail/${index}`);
         }
     }   
 
@@ -121,7 +123,8 @@ function BarChartByDateOrDay({ data, opt=false }) {
             .attr('width', xScale.bandwidth())
             .on("click", function(e, d) {
                 const index = svg.selectAll(".bar").nodes().indexOf(this);
-                handleClick(d, index);
+                let idx = opt ? index : index + 3; 
+                handleClick(d, idx);
             })            
             .transition()
             .attr('fill', colorScale)
