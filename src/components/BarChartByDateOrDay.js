@@ -22,7 +22,7 @@ function BarChartByDateOrDay({ data, opt=false }) {
             let day = dayConvert(index)
             history.push(`/bar-day-detail/${day}`);
         } else {
-            history.push(`/bar-day-detail/${index}`);
+            history.push(`/bar-date-detail/${index}`);
         }
     }   
 
